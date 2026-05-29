@@ -1,0 +1,66 @@
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Environment / secrets
+.env
+.env.local
+.env.*
+*.pem
+*.key
+*.p12
+
+# Node (se usi npm)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Build / cache
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# Claude / AI tooling locali
+.claude/
+
+# Antigravity / Gemini IDE (dati agente locali — non utili su repo)
+.gemini/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+
+# Note e file di lavoro locali
+add.txt
+scratch/
+
+# Netlify CLI
+.netlify/
+
+# Agents
+.agents/
+
+# Immagini originali molto pesanti (opzionale: tieni solo le ottimizzate)
+# assets/img/yachts/*.jpg  ← decommenta se vuoi escludere i raw

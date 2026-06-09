@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fededp7.github.io/FedericoDelPup-portfolio/sitemap.xml

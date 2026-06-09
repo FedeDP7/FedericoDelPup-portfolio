@@ -103,4 +103,30 @@
   /* ---------- Year ---------- */
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ---------- Mouse Tracking Glow ---------- */
+  const cards = document.querySelectorAll(".project, .skill-card, .contact-card");
+  cards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    });
+  });
+
+  /* ---------- Magnetic Buttons ---------- */
+  const buttons = document.querySelectorAll(".btn, .icon-btn");
+  buttons.forEach((btn) => {
+    btn.addEventListener("mousemove", (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    });
+    btn.addEventListener("mouseleave", () => {
+      btn.style.transform = "translate(0px, 0px)";
+    });
+  });
 })();

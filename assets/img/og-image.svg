@@ -1,56 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#09090b"/>
-      <stop offset="1" stop-color="#18181b"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="80%" cy="10%" r="70%">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="logo" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffffff"/>
-      <stop offset="1" stop-color="#d4d4d8"/>
-    </linearGradient>
-    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
-      <path d="M48 0H0V48" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
-    </pattern>
-  </defs>
-
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#grid)"/>
-  <rect width="1200" height="630" fill="url(#glow)"/>
-
-  <!-- logo -->
-  <rect x="80" y="80" width="88" height="88" rx="22" fill="url(#logo)"/>
-  <path d="M101 100h46v15h-26v15h22v15h-22v30h-20z" fill="#09090b"/>
-
-  <!-- eyebrow -->
-  <g font-family="'JetBrains Mono', monospace">
-    <text x="80" y="300" fill="#a1a1aa" font-size="26" letter-spacing="2">PORTFOLIO · FULL-STACK DEV</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0d0e12"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="72" y="90" fill="#eeeef3" font-size="26" font-weight="600">Federico Del Pup<tspan fill="#aba5ff">.</tspan></text>
+    <text x="72" y="260" fill="#eeeef3" font-size="70" font-weight="600" letter-spacing="-2">Informatica, curiosità.</text>
+    <text x="72" y="346" fill="#eeeef3" font-size="70" font-weight="600" letter-spacing="-2">E codice, ogni giorno.</text>
+    <text x="72" y="418" fill="#a7a8b7" font-size="25">Progetti personali · Sviluppo web · Computer Science</text>
+    <path d="M72 498H1128" stroke="#30313c" stroke-width="2"/>
+    <path d="M72 498H388" stroke="#aba5ff" stroke-width="2"/>
+    <text x="72" y="563" fill="#a7a8b7" font-size="22">Udine → Padova</text>
+    <text x="1128" y="563" text-anchor="end" fill="#eeeef3" font-size="22">@FedeDP7</text>
   </g>
-
-  <!-- title -->
-  <g font-family="Inter, system-ui, sans-serif" font-weight="800">
-    <text x="78" y="390" fill="#fafafa" font-size="92" letter-spacing="-3">Federico Del Pup</text>
-  </g>
-
-  <!-- lead -->
-  <g font-family="Inter, system-ui, sans-serif" font-weight="500">
-    <text x="80" y="450" fill="#a1a1aa" font-size="34">Costruisco prodotti web puliti e veloci.</text>
-  </g>
-
-  <!-- chips -->
-  <g font-family="'JetBrains Mono', monospace" font-size="24" fill="#d4d4d8">
-    <rect x="80" y="500" width="150" height="48" rx="24" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
-    <text x="105" y="531">TypeScript</text>
-    <rect x="246" y="500" width="110" height="48" rx="24" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
-    <text x="271" y="531">React</text>
-    <rect x="372" y="500" width="130" height="48" rx="24" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
-    <text x="397" y="531">Next.js</text>
-    <rect x="518" y="500" width="120" height="48" rx="24" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
-    <text x="543" y="531">Node.js</text>
-  </g>
-
-  <text x="1120" y="540" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="24" fill="#52525b">@FedeDP7</text>
 </svg>

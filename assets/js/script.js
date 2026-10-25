@@ -1,132 +1,52 @@
 (() => {
   "use strict";
-
-  /* ---------- Theme ---------- */
-  const STORAGE_KEY = "fp.theme";
   const root = document.documentElement;
-  const themeToggle = document.getElementById("themeToggle");
-
-  const getInitialTheme = () => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === "light" || saved === "dark") return saved;
-    return window.matchMedia("(prefers-color-scheme: light)").matches
-      ? "light"
-      : "dark";
+  root.classList.add("js");
+  const read = key => { try { return localStorage.getItem(key); } catch { return null; } };
+  const save = (key, value) => { try { localStorage.setItem(key, value); } catch { /* Optional persistence. */ } };
+  const getSystemTheme = () => window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  const applyTheme = theme => { root.dataset.theme = theme; };
+  applyTheme(read("fp.theme") || getSystemTheme());
+  document.getElementById("themeToggle")?.addEventListener("click", () => {
+    const next = root.dataset.theme === "light" ? "dark" : "light";
+    applyTheme(next); save("fp.theme", next);
+  });
+  const menu = document.getElementById("navMenu");
+  const toggle = document.getElementById("navToggle");
+  const menuLabel = () => toggle?.setAttribute("aria-label", root.lang === "en"
+    ? (menu?.classList.contains("is-open") ? "Close menu" : "Open menu")
+    : (menu?.classList.contains("is-open") ? "Chiudi menu" : "Apri menu"));
+  const closeMenu = () => { menu?.classList.remove("is-open"); toggle?.setAttribute("aria-expanded", "false"); menuLabel(); };
+  toggle?.addEventListener("click", () => {
+    const open = menu?.classList.toggle("is-open"); toggle.setAttribute("aria-expanded", String(open)); menuLabel();
+  });
+  menu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && menu?.classList.contains("is-open")) { closeMenu(); toggle?.focus(); }
+  });
+  // Each message keeps a static Italian fallback, including when scripts or storage fail.
+  const messages = [...document.querySelectorAll("[data-en]")].map(el => ({ el, it: el.innerHTML, en: el.dataset.en }));
+  const labels = [...document.querySelectorAll("[data-en-aria]")].map(el => ({ el, it: el.getAttribute("aria-label"), en: el.dataset.enAria }));
+  const meta = document.querySelector('meta[name="description"]');
+  const descriptions = {
+    it: "Federico Del Pup — laureato in Informatica a Udine, studente di Computer Science a Padova. Progetti personali e sviluppo web.",
+    en: "Federico Del Pup — Computer Science graduate from Udine, Computer Science student in Padua. Personal projects and web development."
   };
-
-  const applyTheme = (theme) => {
-    if (theme === "light") {
-      root.setAttribute("data-theme", "light");
-    } else {
-      root.removeAttribute("data-theme");
-    }
+  const setLanguage = lang => {
+    root.lang = lang;
+    messages.forEach(({el,it,en}) => { el.innerHTML = lang === "en" ? en : it; });
+    labels.forEach(({el,it,en}) => el.setAttribute("aria-label", lang === "en" ? en : it));
+    document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    if (meta && document.getElementById("home")) meta.content = descriptions[lang];
+    menuLabel();
   };
-
-  applyTheme(getInitialTheme());
-
-  themeToggle?.addEventListener("click", () => {
-    const next =
-      root.getAttribute("data-theme") === "light" ? "dark" : "light";
-    applyTheme(next);
-    localStorage.setItem(STORAGE_KEY, next);
-  });
-
-  /* ---------- Mobile nav ---------- */
-  const navToggle = document.getElementById("navToggle");
-  const navMenu = document.getElementById("navMenu");
-
-  const closeMenu = () => {
-    navMenu?.classList.remove("is-open");
-    navToggle?.setAttribute("aria-expanded", "false");
-    navToggle?.setAttribute("aria-label", "Apri menu");
-  };
-
-  navToggle?.addEventListener("click", () => {
-    const open = navMenu?.classList.toggle("is-open");
-    navToggle.setAttribute("aria-expanded", String(open));
-    navToggle.setAttribute("aria-label", open ? "Chiudi menu" : "Apri menu");
-  });
-
-  navMenu?.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", closeMenu)
-  );
-
-  /* ---------- Sticky nav state ---------- */
-  const nav = document.getElementById("nav");
-  const onScroll = () => {
-    nav?.classList.toggle("is-scrolled", window.scrollY > 12);
-  };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
-
-  /* ---------- Active link highlight ---------- */
-  const sections = document.querySelectorAll("main section[id]");
-  const links = document.querySelectorAll(".nav__menu a[href^='#']");
-  const linkMap = new Map();
-  links.forEach((l) => {
-    const id = l.getAttribute("href")?.slice(1);
-    if (id) linkMap.set(id, l);
-  });
-
-  const linkObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        links.forEach((l) => l.classList.remove("is-active"));
-        const active = linkMap.get(e.target.id);
-        active?.classList.add("is-active");
-      });
-    },
-    { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-  );
-  sections.forEach((s) => linkObserver.observe(s));
-
-  /* ---------- Reveal on scroll ---------- */
-  const revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((e, i) => {
-          if (!e.isIntersecting) return;
-          const el = e.target;
-          setTimeout(() => el.classList.add("is-visible"), i * 60);
-          obs.unobserve(el);
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-    );
-    revealEls.forEach((el) => revealObserver.observe(el));
-  } else {
-    revealEls.forEach((el) => el.classList.add("is-visible"));
-  }
-
-  /* ---------- Year ---------- */
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
-
-  /* ---------- Mouse Tracking Glow ---------- */
-  const cards = document.querySelectorAll(".project, .skill-card, .contact-card");
-  cards.forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty("--mouse-x", `${x}px`);
-      card.style.setProperty("--mouse-y", `${y}px`);
-    });
-  });
-
-  /* ---------- Magnetic Buttons ---------- */
-  const buttons = document.querySelectorAll(".btn, .icon-btn");
-  buttons.forEach((btn) => {
-    btn.addEventListener("mousemove", (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-    });
-    btn.addEventListener("mouseleave", () => {
-      btn.style.transform = "translate(0px, 0px)";
-    });
-  });
+  const requested = new URLSearchParams(location.search).get("lang");
+  const initial = requested === "en" || requested === "it" ? requested : read("fp.lang");
+  setLanguage(initial === "en" ? "en" : "it");
+  document.querySelectorAll("[data-lang]").forEach(button => button.addEventListener("click", () => {
+    setLanguage(button.dataset.lang); save("fp.lang", button.dataset.lang);
+    const url = new URL(location.href); url.searchParams.set("lang", button.dataset.lang);
+    history.replaceState(null, "", url);
+  }));
+  const year = document.getElementById("year"); if (year) year.textContent = new Date().getFullYear();
 })();

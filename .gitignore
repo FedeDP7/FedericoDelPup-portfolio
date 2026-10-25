@@ -62,5 +62,9 @@ scratch/
 # Agents
 .agents/
 
+# Local design reports and runtime files (keep the shared preference)
+.impeccable/*
+!.impeccable/config.json
+
 # Immagini originali molto pesanti (opzionale: tieni solo le ottimizzate)
 # assets/img/yachts/*.jpg  ← decommenta se vuoi escludere i raw

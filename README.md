@@ -1,84 +1,44 @@
 # Federico Del Pup — Portfolio
 
-Personal portfolio website. Static, dependency-free, fast.
-
-[![Live](https://img.shields.io/badge/live-demo-09090b?style=flat-square)](https://fededp7.github.io/FedericoDelPup-portfolio/)
-[![Made with](https://img.shields.io/badge/HTML%20·%20CSS%20·%20JS-vanilla-555?style=flat-square)](#stack)
-[![Deploy](https://github.com/FedeDP7/FedericoDelPup-portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/FedeDP7/FedericoDelPup-portfolio/actions/workflows/deploy.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
-
-**→ [Live demo](https://fededp7.github.io/FedericoDelPup-portfolio/)**
-
----
-
-## Preview
-
-![Portfolio preview](assets/img/og-image.svg)
-
-## Features
-
-- 🌗 **Dark / light theme** — system-aware, persisted in `localStorage`
-- ✨ **Scroll reveal** — staggered `IntersectionObserver` animations
-- 🧲 **Micro-interactions** — magnetic buttons, mouse-tracking card glow
-- 📱 **Responsive** — mobile nav, fluid `clamp()` type scale
-- ♿ **Accessible** — skip link, focus states, `prefers-reduced-motion`
-- 🚀 **Zero runtime deps** — pure HTML/CSS/JS, instant load
-- 🔍 **SEO ready** — Open Graph, Twitter cards, sitemap, canonical
-- 🎨 **Custom 404** — animated, on-brand
+Personal portfolio in Italian and English. Computer Science graduate from the University of Udine, now studying Computer Science at the University of Padua (major IMS). Personal projects, thesis and web commissions.
 
 ## Stack
 
-| Layer | Tech |
-|-------|------|
-| Markup | HTML5 |
-| Styles | CSS3 (custom properties, grid, `color-mix`) |
-| Logic | Vanilla JavaScript (ES modules pattern, IIFE) |
-| Fonts | Inter · JetBrains Mono |
-| Hosting | GitHub Pages |
-| CI | GitHub Actions |
+Static HTML, CSS and JavaScript. No build step or runtime dependencies. Inter is loaded from Google Fonts; a system fallback remains available.
 
-## Structure
+## Features
 
-```
-.
-├── index.html              # page
-├── 404.html                # custom not-found page
-├── robots.txt              # crawler rules
-├── sitemap.xml             # SEO
-├── assets/
-│   ├── css/styles.css      # design system + components
-│   ├── js/script.js        # theme, nav, reveal, interactions
-│   └── img/
-│       ├── favicon.svg     # logo mark
-│       └── og-image.svg    # social share card
-└── .github/workflows/deploy.yml
-```
+- IT/EN switch; optional localStorage persistence and shareable `?lang=it` / `?lang=en` URLs.
+- Light/dark theme with system preference fallback.
+- Responsive project list, academic journey and thesis section.
+- Visible content without JavaScript; mobile navigation remains available.
+- Keyboard focus, skip link, Escape to close the menu and reduced-motion support.
+- A single entrance animation and subtle link interactions; no magnetic motion.
+- Shared bilingual custom 404 with the GitHub Pages deployment base.
 
 ## Run locally
 
-No build step. Serve the folder:
+Serve this folder using any static HTTP server, for example `npx serve .`.
 
-```bash
-# Python
-python -m http.server 8000
+## Files
 
-# Node
-npx serve .
-```
+- `index.html`: Italian content and English translations in `data-en` attributes.
+- `assets/css/styles.css`: design tokens, themes and responsive layouts.
+- `assets/js/script.js`: theme, language, navigation and year.
+- `404.html`: error page; absolute assets use `/FedericoDelPup-portfolio/`.
+- `PRODUCT.md`: confirmed product and profile facts.
+- `DESIGN.md`: current visual conventions.
 
-Open <http://localhost:8000>.
+To update bilingual text, edit the Italian element content and its complete English `data-en` value. Labels use `data-en-aria`. Avoid placing translatable elements inside another translatable element.
 
-## Deploy
+## Deployment
 
-Pushing to `main` triggers the GitHub Actions workflow, which publishes to GitHub Pages.
-One-time setup: **Settings → Pages → Source → GitHub Actions**.
+The existing GitHub Actions workflow publishes to GitHub Pages on push to `main`. Production base: `/FedericoDelPup-portfolio/`. A different repository name or custom domain requires updating the 404 asset/home paths, canonical URL, sitemap and social metadata.
 
-## Customize
+## Content pending
 
-- Colors / spacing / motion → `:root` tokens in `styles.css`
-- Content → sections in `index.html`
-- URLs → search-replace the base URL if you fork
+The thesis repository will be linked when published. The Bibliography repository URL has not been supplied. No placeholder action is shown. Dates of graduation, thesis outcomes and hackathon results must not be invented.
 
 ## License
 
-[MIT](LICENSE) © Federico Del Pup
+MIT — see LICENSE.

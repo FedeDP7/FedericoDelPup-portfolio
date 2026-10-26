@@ -23,7 +23,7 @@ Confermato dall'utente il 25 ottobre 2026:
 - Continua progetti personali e siti web per fare esperienza e perfezionare la tecnica.
 - Primo hackathon il 24 ottobre 2026; non sono stati forniti nome, ruolo, risultati o repository.
 - La tesi verrà aggiunta prossimamente come repository: nessun link disponibile oggi.
-- I progetti già presentati sono confermati dall'utente; conservare la selezione.
+- I progetti già presentati sono confermati dall'utente. Il 26 ottobre 2026 ha chiesto di rimuovere Portfolio Site e attendere prima di inserire altri progetti.
 
 ## Capabilities and Constraints
 
@@ -35,7 +35,7 @@ Confermato dall'utente il 25 ottobre 2026:
 
 ## Evidence on Hand
 
-index.html contiene i progetti Portfolio Site, DBMS - Bibliography Project e Sorting Algorithms - Benchmarking. Link Bibliography non fornito: dichiararlo indisponibile senza azioni finte. Tesi descritta secondo il titolo fornito, repository in arrivo.
+index.html contiene DBMS - Bibliography Project e Sorting Algorithms - Benchmarking. Portfolio Site rimosso su richiesta. Link Bibliography non fornito: dichiararlo indisponibile senza azioni finte. Tesi descritta secondo il titolo fornito, repository in arrivo.
 
 ## Product Principles
 

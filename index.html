@@ -42,8 +42,7 @@
 </a>
 <header class="nav" id="nav">
 <div class="container nav__inner">
-<a class="wordmark" href="#home">Federico Del Pup<span aria-hidden="true">.</span>
-</a>
+<div class="nav__center">
 <nav id="navMenu" class="nav__menu" aria-label="Navigazione principale" data-en-aria="Main navigation">
 <ul>
 <li>
@@ -63,11 +62,12 @@
 </li>
 </ul>
 </nav>
-<div class="nav__actions">
 <div class="languages" role="group" aria-label="Lingua" data-en-aria="Language">
 <button type="button" data-lang="it" aria-pressed="true" lang="it">IT</button>
 <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
 </div>
+</div>
+<div class="nav__actions">
 <button id="themeToggle" class="icon-btn" type="button" aria-label="Cambia tema" data-en-aria="Toggle theme">
 <svg viewBox="0 0 24 24" aria-hidden="true">
 <path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/>
@@ -84,9 +84,7 @@
 <main id="main" tabindex="-1">
 <section class="hero container" id="home">
 <div class="hero__intro">
-<h1>
-<span data-en="Computer science, curiosity.<br />And code, every day.">Informatica, curiosità.<br />E codice, ogni giorno.</span>
-</h1>
+<h1 class="sr-only">Federico Del Pup — Portfolio</h1>
 <p class="hero__lead" data-en="I’m Federico. I study, build projects and develop websites: a hands-on way to keep learning.">Sono Federico. Studio, costruisco progetti e sviluppo siti web: un modo concreto per continuare a imparare.</p>
 <div class="hero__cta">
 <a class="btn btn--primary" href="#projects">
@@ -128,26 +126,6 @@
 <p data-en="A selection of what I build to learn, experiment and improve.">Una selezione di quello che costruisco per imparare, sperimentare e migliorare.</p>
 </header>
 <div class="projects">
-<article class="project">
-<div class="project__identity">
-<p class="project__category">Web</p>
-<h3>Portfolio Site</h3>
-</div>
-<div class="project__body">
-<p class="project__desc" data-en="This site is also a workshop: I build interfaces, experiment with interactions and refine my technique.">Questo sito è anche un laboratorio: sviluppo interfacce, sperimento con le interazioni e perfeziono la mia tecnica.</p>
-<p class="project__stack">HTML · CSS · JavaScript</p>
-<div class="project__links">
-<a class="text-link" href="https://github.com/FedeDP7/FedericoDelPup-portfolio" target="_blank" rel="noopener noreferrer">Repository<svg viewBox="0 0 24 24" aria-hidden="true">
-<path d="M5 12h14M12 5l7 7-7 7"/>
-</svg>
-</a>
-<a class="text-link" href="https://fededp7.github.io/FedericoDelPup-portfolio/" target="_blank" rel="noopener noreferrer">Demo<svg viewBox="0 0 24 24" aria-hidden="true">
-<path d="M5 12h14M12 5l7 7-7 7"/>
-</svg>
-</a>
-</div>
-</div>
-</article>
 <article class="project">
 <div class="project__identity">
 <p class="project__category">Database</p>
@@ -253,7 +231,7 @@
 <dt>
 <span data-en="Analysis &amp; tooling">Analisi e strumenti</span>
 </dt>
-<dd>Python · NumPy · Matplotlib · Jupyter · Git · LaTeX</dd>
+<dd>Python · Git · LaTeX</dd>
 </div>
 </dl>
 </section>

@@ -136,6 +136,7 @@ p {
   padding:0
 }
 .nav__menu a {
+  position:relative;
   display:inline-flex;
   align-items:center;
   min-height:44px;
@@ -143,9 +144,22 @@ p {
   font-size:.88rem;
   color:var(--muted)
 }
-.nav__menu a:hover,.nav__menu a.is-active {
+.nav__menu a:hover,.nav__menu a[aria-current="location"] {
   color:var(--text)
 }
+.nav__menu a::after {
+  content:"";
+  position:absolute;
+  bottom:5px;
+  left:0;
+  right:0;
+  height:2px;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .18s var(--ease)
+}
+.nav__menu a[aria-current="location"]::after { transform:scaleX(1) }
 .nav__actions {
   position:absolute;
   right:0;
@@ -227,7 +241,7 @@ html:not(.js) .languages,html:not(.js) #themeToggle {
   background:var(--button);
   color:#fff
 }
-.btn:hover svg,.text-link:hover svg {
+.btn:is(:hover,:focus-visible) svg,.text-link:is(:hover,:focus-visible) svg {
   transform:translateX(4px)
 }
 .text-link {
@@ -242,7 +256,7 @@ html:not(.js) .languages,html:not(.js) #themeToggle {
   text-decoration:underline
 }
 .text-link svg,.btn svg {
-  transition:transform .3s var(--ease)
+  transition:transform .18s var(--ease)
 }
 .hero__aside {
   padding-bottom:6px;
@@ -273,14 +287,15 @@ html:not(.js) .languages,html:not(.js) #themeToggle {
   inset:0 auto 0 0;
   width:30%;
   background:var(--accent);
-  animation:draw-line 1.8s var(--ease) both
+  transform-origin:left;
+  animation:draw-line .7s var(--ease) both
 }
 @keyframes draw-line {
   from {
-    width:0
+    transform:scaleX(0)
   }
   to {
-    width:30%
+    transform:scaleX(1)
   }
 
 }
@@ -464,9 +479,9 @@ html:not(.js) .languages,html:not(.js) #themeToggle {
 .contact__email svg {
   width:32px;
   height:32px;
-  transition:transform .3s var(--ease)
+  transition:transform .18s var(--ease)
 }
-.contact__email:hover svg {
+.contact__email:is(:hover,:focus-visible) svg {
   transform:rotate(-45deg)
 }
 .contact__social {
@@ -486,7 +501,7 @@ html:not(.js) .languages,html:not(.js) #themeToggle {
 .footer svg {
   transform:rotate(-90deg)
 }
-.footer .text-link:hover svg {
+.footer .text-link:is(:hover,:focus-visible) svg {
   transform:rotate(-90deg) translateX(3px)
 }
 /* Error page uses the same shared system. */
@@ -553,6 +568,7 @@ html:not(.js) .languages,html:not(.js) #themeToggle {
     padding-block:12px
   }
 .nav__actions {
+    top:16px;
     gap:4px
   }
   .icon-btn {
@@ -568,12 +584,31 @@ html:not(.js) .languages,html:not(.js) #themeToggle {
     flex-basis:100%;
     margin:0
   }
-  .js .nav__menu:not(.is-open) {
-    display:none
+  .js .nav__menu {
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    display:grid;
+    grid-template-rows:0fr;
+    opacity:0;
+    visibility:hidden;
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    transition:grid-template-rows .18s var(--ease),opacity .15s ease,visibility 0s .18s
   }
-  .nav__menu.is-open {
-    display:block
+  .js .nav__menu.is-open {
+    grid-template-rows:1fr;
+    opacity:1;
+    visibility:visible;
+    transition-delay:0s
   }
+  .js .nav__menu ul { min-height:0; overflow:hidden; padding:0 }
+  .nav__menu a::after { right:auto; width:28px }
+  .nav__toggle path { transition:transform .18s var(--ease),opacity .12s; transform-origin:center }
+  .nav__toggle[aria-expanded="true"] path:nth-child(1) { transform:translateY(5px) rotate(45deg) }
+  .nav__toggle[aria-expanded="true"] path:nth-child(2) { opacity:0 }
+  .nav__toggle[aria-expanded="true"] path:nth-child(3) { transform:translateY(-5px) rotate(-45deg) }
   .nav__menu ul {
     flex-direction:column;
     gap:0;

@@ -24,6 +24,22 @@
   document.addEventListener("keydown", event => {
     if (event.key === "Escape" && menu?.classList.contains("is-open")) { closeMenu(); toggle?.focus(); }
   });
+  // The current section is both visible and announced without moving focus.
+  const sectionLinks = [...(menu?.querySelectorAll('a[href^="#"]') || [])];
+  const sectionTargets = sectionLinks.map(link => ({link, section:document.querySelector(link.getAttribute("href"))})).filter(item => item.section);
+  let sectionFrame = false;
+  const updateSection = () => {
+    sectionFrame = false;
+    let current = null;
+    sectionTargets.forEach(item => { if (item.section.getBoundingClientRect().top <= window.innerHeight * .35) current = item.link; });
+    sectionLinks.forEach(link => { if (link === current) link.setAttribute("aria-current", "location"); else link.removeAttribute("aria-current"); });
+  };
+  const scheduleSection = () => { if (!sectionFrame) { sectionFrame = true; requestAnimationFrame(updateSection); } };
+  if (sectionTargets.length) {
+    window.addEventListener("scroll", scheduleSection, { passive:true });
+    window.addEventListener("resize", scheduleSection);
+    updateSection();
+  }
   // Each message keeps a static Italian fallback, including when scripts or storage fail.
   const messages = [...document.querySelectorAll("[data-en]")].map(el => ({ el, it: el.innerHTML, en: el.dataset.en }));
   const labels = [...document.querySelectorAll("[data-en-aria]")].map(el => ({ el, it: el.getAttribute("aria-label"), en: el.dataset.enAria }));
@@ -39,6 +55,7 @@
     document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
     if (meta && document.getElementById("home")) meta.content = descriptions[lang];
     menuLabel();
+    if (sectionTargets.length) scheduleSection();
   };
   const requested = new URLSearchParams(location.search).get("lang");
   const initial = requested === "en" || requested === "it" ? requested : read("fp.lang");

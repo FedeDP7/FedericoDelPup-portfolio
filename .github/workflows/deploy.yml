@@ -33,6 +33,7 @@ jobs:
           mkdir _site
           cp index.html 404.html robots.txt sitemap.xml .nojekyll _site/
           cp -R assets _site/assets
+          cp -R FedericoDelPup-portfolio _site/FedericoDelPup-portfolio
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

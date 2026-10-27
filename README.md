@@ -25,7 +25,7 @@ Serve this folder using any static HTTP server, for example `npx serve .`.
 - `index.html`: Italian content and English translations in `data-en` attributes.
 - `assets/css/styles.css`: design tokens, themes and responsive layouts.
 - `assets/js/script.js`: theme, language, navigation and year.
-- `404.html`: error page; absolute assets use `/FedericoDelPup-portfolio/`.
+- `404.html`: error page; absolute assets use `/`.
 - `PRODUCT.md`: confirmed product and profile facts.
 - `DESIGN.md`: current visual conventions.
 
@@ -33,7 +33,7 @@ To update bilingual text, edit the Italian element content and its complete Engl
 
 ## Deployment
 
-The existing GitHub Actions workflow publishes to GitHub Pages on push to `main`. Production base: `/FedericoDelPup-portfolio/`. A different repository name or custom domain requires updating the 404 asset/home paths, canonical URL, sitemap and social metadata.
+The existing GitHub Actions workflow publishes to GitHub Pages on push to `main`. Production base: `/`. The user site is published at https://fededp7.github.io/. A compatibility page at `/FedericoDelPup-portfolio/` redirects previously shared homepage links to the root, retaining query parameters and anchors.
 
 ## Content pending
 

@@ -35,7 +35,7 @@ Confermato dall'utente il 25 ottobre 2026:
 
 ## Evidence on Hand
 
-index.html contiene DBMS - Bibliography Project e Sorting Algorithms - Benchmarking. Portfolio Site rimosso su richiesta. Link Bibliography non fornito: dichiararlo indisponibile senza azioni finte. Tesi descritta secondo il titolo fornito, con collegamento al repository clinical-coding-platform.
+index.html contiene DBMS - Bibliography Project e Sorting Algorithms - Benchmarking. Portfolio Site rimosso su richiesta. Repository Bibliography verificato: https://github.com/stetone19/dbms-bibliography-project; Federico Del Pup elencato tra gli autori. Tesi descritta secondo il titolo fornito, con collegamento al repository clinical-coding-platform.
 
 ## Product Principles
 

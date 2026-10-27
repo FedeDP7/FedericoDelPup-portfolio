@@ -37,7 +37,7 @@ The existing GitHub Actions workflow publishes to GitHub Pages on push to `main`
 
 ## Content pending
 
-Thesis repository: https://github.com/FedeDP7/clinical-coding-platform. The Bibliography repository URL has not been supplied. No placeholder action is shown. Dates of graduation, thesis outcomes and hackathon results must not be invented.
+Thesis repository: https://github.com/FedeDP7/clinical-coding-platform. Bibliography repository: https://github.com/stetone19/dbms-bibliography-project. Dates of graduation, thesis outcomes and hackathon results must not be invented.
 
 ## License
 

@@ -21,7 +21,7 @@ Confermato dall'utente il 25 ottobre 2026:
 - Tesi: «Progettazione e sviluppo di una piattaforma per ICD-10-IM ispirata all’architettura ICD-11 dell’OMS: API REST e libreria JavaScript».
 - Attualmente studia Computer Science presso l'Università di Padova, major IMS. Non espandere l'acronimo senza conferma.
 - Continua progetti personali e siti web per fare esperienza e perfezionare la tecnica.
-- Primo hackathon il 24 ottobre 2026; non sono stati forniti nome, ruolo, risultati o repository.
+- Primo hackathon: Starting Finance Club Padova × Paradigma Exponential Hub, Padova, 24 ottobre 2026. Progetto FERMO, https://github.com/FedeDP7/fermo. Prototipo, business plan e pitch sviluppati in una giornata con Stefano Toneguzzo, Mattia Guardabascio e Christian Vianello; nessuna suddivisione dei contributi o premio dichiarato. Contesto confermato dal post allegato dall’utente e dal README pubblico. MVP con analisi euristica locale di messaggi italiani, non verifica bancaria né garanzia di autenticità.
 - Repository della tesi pubblicato: https://github.com/FedeDP7/clinical-coding-platform (README verificato).
 - I progetti già presentati sono confermati dall'utente. Il 26 ottobre 2026 ha chiesto di rimuovere Portfolio Site e attendere prima di inserire altri progetti.
 

@@ -701,3 +701,7 @@ html:not(.js) .languages,html:not(.js) #themeToggle {
 }
 
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+
+#hackathon .project__identity .project__desc { margin-top:8px; }
+#hackathon .project__body > .project__desc + .project__desc { margin-top:16px; }
+#hackathon .project__note { margin-top:8px; }
